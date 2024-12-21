@@ -1,0 +1,69 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "directories",
+    "collectionId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
+    "dateExported": "2024-12-21T04:28:09.315Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "68ea7b60-4b95-459e-91e2-c59b44107066",
+            "colId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
+            "containerId": "",
+            "name": "Ping",
+            "url": "localhost:8080/ping",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-12-21T04:23:56.410Z",
+            "modified": "2024-12-21T04:23:56.410Z",
+            "headers": []
+        },
+        {
+            "_id": "1eb6a322-5d99-48a8-975e-813b3d67750c",
+            "colId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
+            "containerId": "",
+            "name": "Add Directory",
+            "url": "http://localhost:8080/directories",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-12-21T04:24:04.671Z",
+            "modified": "2024-12-21T04:24:04.671Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"yes\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "5f1aa6f5-6595-4906-872d-8a50ee45a91b",
+            "colId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
+            "containerId": "",
+            "name": "Get Directory By Id",
+            "url": "http://localhost:8080/directories/615cd2a9-9406-4993-98e7-9e118040becd",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-12-21T04:24:13.255Z",
+            "modified": "2024-12-21T04:24:13.255Z",
+            "headers": []
+        },
+        {
+            "_id": "4dcb9782-4306-40f7-b334-5002b817f6e4",
+            "colId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
+            "containerId": "",
+            "name": "Create User",
+            "url": "http://localhost:8080/users",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-12-21T04:25:39.813Z",
+            "modified": "2024-12-21T04:26:16.085Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"udin\",\n  \"role\": \"admin\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "YJydPKdx7gMXvnjeMS15J4tI6OIb0S9ytlpLVWGP4ziEZP2fCaxFGMNsF3NO2KzuIJLUNzb94Q9W5gxO9RiKPw"
+}
