@@ -1,11 +1,13 @@
 package model
 
+import "time"
+
 type User struct {
-	Id        string `json:"id"`
-	Email     string `json:"email"`
-	Role      Role   `json:"role"`
-	CreatedAt string `json:"created_at"`
-	UpdatedAt string `json:"updated_at"`
+	Id        string    `json:"id"`
+	Email     string    `json:"email"`
+	Role      Role      `json:"role"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 type Role string
