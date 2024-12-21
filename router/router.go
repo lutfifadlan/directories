@@ -10,6 +10,7 @@ func SetupRoutes(r *gin.Engine) {
 	r.GET("/api/directories/:id", handler.GetDirectoryById)
 	r.POST("/api/users", handler.AddUser)
 	r.GET("/api/users/:id", handler.GetUserById)
+	r.POST("/api/magic-link", handler.CreateMagicLink)
 	r.GET("/", gin.WrapF(handler.IndexHandler))
 	r.GET("/ping", handler.Ping)
 }

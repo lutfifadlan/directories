@@ -52,3 +52,16 @@ func (repo *UserRepository) FindById(id string) (*model.User, error) {
 
 	return &user, nil
 }
+
+func (repo *UserRepository) FindByEmail(email string) (*model.User, error) {
+	var user model.User
+	query := "SELECT * FROM users WHERE email = ?"
+
+	err := repo.DB.QueryRow(query, email).Scan(&user.Id, &user.Email, &user.Role, &user.CreatedAt, &user.UpdatedAt)
+	if err != nil {
+		log.Println("Error finding user by email:", err)
+		return nil, ErrUserNotFound
+	}
+
+	return &user, nil
+}

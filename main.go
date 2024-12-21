@@ -21,12 +21,16 @@ func main() {
 
 	directoryRepo := repository.NewDirectoryRepository(dbConn)
 	userRepo := repository.NewUserRepository(dbConn)
+	magicLinkRepo := repository.NewMagicLinkRepository(dbConn)
 
 	directoryService := service.NewDirectoryService(directoryRepo)
 	userService := service.NewUserService(userRepo)
+	magicLinkService := service.NewMagicLinkService(magicLinkRepo)
 
 	handler.SetDirectoryService(directoryService)
 	handler.SetUserService(userService)
+	handler.SetMagicLinkService(magicLinkService)
+	handler.SetUserRepository(userRepo)
 
 	r := gin.Default()
 	r.Use(gin.Recovery())

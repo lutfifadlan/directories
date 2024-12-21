@@ -31,11 +31,6 @@ func (repo *DirectoryRepository) Add(name string) (*model.Directory, error) {
 		return nil, err
 	}
 
-	if err != nil {
-		log.Println("Error getting last insert ID:", err)
-		return nil, err
-	}
-
 	d, err := repo.FindById(id)
 	if err != nil {
 		log.Println("Error finding directory by ID:", err)
