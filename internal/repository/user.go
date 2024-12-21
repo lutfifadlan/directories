@@ -42,9 +42,9 @@ func (repo *UserRepository) Add(email string, role model.Role) (*model.User, err
 
 func (repo *UserRepository) FindById(id string) (*model.User, error) {
 	var user model.User
-	query := "SELECT id, email, role FROM users WHERE id = ?"
+	query := "SELECT * FROM users WHERE id = ?"
 
-	err := repo.DB.QueryRow(query, id).Scan(&user.Id, &user.Email, &user.Role)
+	err := repo.DB.QueryRow(query, id).Scan(&user.Id, &user.Email, &user.Role, &user.CreatedAt, &user.UpdatedAt)
 	if err != nil {
 		log.Println("Error finding user by ID:", err)
 		return nil, ErrUserNotFound
