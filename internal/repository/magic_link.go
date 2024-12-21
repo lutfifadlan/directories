@@ -46,14 +46,15 @@ func (repo *MagicLinkRepository) FindById(id string) (*model.MagicLink, error) {
 
 	var m model.MagicLink
 
+	// the order of scan is actually based on the order of the columns in the query
 	err := repo.DB.QueryRow(query, id).Scan(
 		&m.ID,
 		&m.UserID,
 		&m.Token,
 		&m.Used,
-		&m.ExpiresAt,
 		&m.CreatedAt,
 		&m.UpdatedAt,
+		&m.ExpiresAt,
 	)
 
 	if err != nil {
@@ -66,4 +67,43 @@ func (repo *MagicLinkRepository) FindById(id string) (*model.MagicLink, error) {
 	}
 
 	return &m, nil
+}
+
+func (repo *MagicLinkRepository) FindByToken(token string) (*model.MagicLink, error) {
+	query := "SELECT * FROM magic_links WHERE token = ?"
+
+	var m model.MagicLink
+
+	err := repo.DB.QueryRow(query, token).Scan(
+		&m.ID,
+		&m.UserID,
+		&m.Token,
+		&m.Used,
+		&m.CreatedAt,
+		&m.UpdatedAt,
+		&m.ExpiresAt,
+	)
+
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, ErrMagicLinkNotFound
+		}
+
+		log.Println("Error finding magic link by token:", err)
+		return nil, err
+	}
+
+	return &m, nil
+}
+
+func (repo *MagicLinkRepository) Update(m *model.MagicLink) (*model.MagicLink, error) {
+	query := "UPDATE magic_links SET used = ? WHERE id = ?"
+
+	_, err := repo.DB.Exec(query, m.Used, m.ID)
+	if err != nil {
+		log.Println("Error updating magic link:", err)
+		return nil, err
+	}
+
+	return m, nil
 }

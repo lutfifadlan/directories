@@ -4,6 +4,7 @@ import (
 	"crypto/rand"
 	"database/sql"
 	"encoding/base64"
+	"errors"
 	"time"
 
 	"github.com/lutfifadlan/directories/internal/model"
@@ -11,6 +12,8 @@ import (
 )
 
 const TokenLength = 32
+
+var ErrMagicLinkExpired = errors.New("magic link expired")
 
 type MagicLinkService struct {
 	Repo *repository.MagicLinkRepository
@@ -45,6 +48,31 @@ func (s *MagicLinkService) GenerateMagicLink(db *sql.DB, email string) (*model.M
 
 	magicLink, err := s.Repo.Create(user.Id, token, time.Now().Add(time.Hour*24))
 	if err != nil {
+		return nil, err
+	}
+
+	return magicLink, nil
+}
+
+func (s *MagicLinkService) VerifyMagicLink(db *sql.DB, token string) (*model.MagicLink, error) {
+	magicLink, err := s.Repo.FindByToken(token)
+	if err != nil {
+		if err == repository.ErrMagicLinkNotFound {
+			return nil, nil
+		}
+		return nil, err
+	}
+
+	if magicLink.ExpiresAt.Before(time.Now()) {
+		return nil, ErrMagicLinkExpired
+	}
+
+	if magicLink.Used {
+		return nil, errors.New("magic link already used")
+	}
+
+	magicLink.Used = true
+	if _, err := s.Repo.Update(magicLink); err != nil {
 		return nil, err
 	}
 

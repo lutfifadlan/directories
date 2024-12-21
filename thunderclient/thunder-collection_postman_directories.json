@@ -1,0 +1,162 @@
+{
+    "info": {
+        "_postman_id": "8addabbc-0298-4259-ae7d-4984be231d60",
+        "name": "directories",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Ping",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "localhost:8080/ping",
+                    "path": [
+                        "ping"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080"
+                }
+            }
+        },
+        {
+            "name": "Add Directory",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:8080/api/directories",
+                    "path": [
+                        "api",
+                        "directories"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"yes\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Get Directory by Id",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8080/api/directories/94e8d176-debc-428d-91de-16a87f132f15",
+                    "path": [
+                        "api",
+                        "directories",
+                        "94e8d176-debc-428d-91de-16a87f132f15"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080"
+                }
+            }
+        },
+        {
+            "name": "Create User",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:8080/api/users",
+                    "path": [
+                        "api",
+                        "users"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"email\": \"hi@lutfifadlan.com\",\n  \"role\": \"admin\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Get User by Id",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8080/api/users/73617efb-24ac-4076-af93-927ad4c45e38",
+                    "path": [
+                        "api",
+                        "users",
+                        "73617efb-24ac-4076-af93-927ad4c45e38"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080"
+                }
+            }
+        },
+        {
+            "name": "Create Magic Link",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost:8080/api/magic-link",
+                    "path": [
+                        "api",
+                        "magic-link"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"email\": \"hi@lutfifadlan.com\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Verify Magic Link",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "localhost:8080/api/magic-link/100",
+                    "path": [
+                        "api",
+                        "magic-link",
+                        "100"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080"
+                }
+            }
+        }
+    ]
+}

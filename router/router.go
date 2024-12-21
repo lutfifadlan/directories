@@ -11,6 +11,7 @@ func SetupRoutes(r *gin.Engine) {
 	r.POST("/api/users", handler.AddUser)
 	r.GET("/api/users/:id", handler.GetUserById)
 	r.POST("/api/magic-link", handler.CreateMagicLink)
+	r.GET("/api/magic-link/:token", handler.VerifyMagicLink)
 	r.GET("/", gin.WrapF(handler.IndexHandler))
 	r.GET("/ping", handler.Ping)
 }

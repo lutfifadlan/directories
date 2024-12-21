@@ -37,3 +37,25 @@ func CreateMagicLink(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, m)
 }
+
+func VerifyMagicLink(c *gin.Context) {
+	token := c.Param("token")
+
+	if token == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "token is required"})
+		return
+	}
+
+	m, err := magicLinkService.VerifyMagicLink(userRepository.DB, token)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	if m == nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "magic link not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, m)
+}
