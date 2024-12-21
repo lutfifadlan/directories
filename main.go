@@ -20,10 +20,13 @@ func main() {
 	dbConn := db.InitDB()
 
 	directoryRepo := repository.NewDirectoryRepository(dbConn)
+	userRepo := repository.NewUserRepository(dbConn)
 
 	directoryService := service.NewDirectoryService(directoryRepo)
+	userService := service.NewUserService(userRepo)
 
 	handler.SetDirectoryService(directoryService)
+	handler.SetUserService(userService)
 
 	r := gin.Default()
 	r.Use(gin.Recovery())

@@ -1,4 +1,4 @@
 - Run with live mode: air
 - Run without live mode: go run main.go
 - Create migration scripts: migrate create -ext sql -dir db/migrations -seq create_directories_table
-- Execute migration: migrate -path db/migrations -database "DB_USER:DB_PASSWORD@tcp(DB_HOST:DB_PORT)/DB_NAME" up
+- Execute migration: migrate -path db/migrations -database "mysql://DB_USER:DB_PASSWORD@tcp(DB_HOST:DB_PORT)/DB_NAME" up

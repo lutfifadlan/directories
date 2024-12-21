@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "directories",
     "collectionId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
-    "dateExported": "2024-12-21T04:28:09.315Z",
+    "dateExported": "2024-12-21T06:11:14.761Z",
     "version": "1.2",
     "folders": [],
     "requests": [
@@ -23,11 +23,11 @@
             "colId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
             "containerId": "",
             "name": "Add Directory",
-            "url": "http://localhost:8080/directories",
+            "url": "http://localhost:8080/api/directories",
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-12-21T04:24:04.671Z",
-            "modified": "2024-12-21T04:24:04.671Z",
+            "modified": "2024-12-21T06:09:53.300Z",
             "headers": [],
             "body": {
                 "type": "json",
@@ -39,12 +39,12 @@
             "_id": "5f1aa6f5-6595-4906-872d-8a50ee45a91b",
             "colId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
             "containerId": "",
-            "name": "Get Directory By Id",
-            "url": "http://localhost:8080/directories/615cd2a9-9406-4993-98e7-9e118040becd",
+            "name": "Get Directory by Id",
+            "url": "http://localhost:8080/api/directories/615cd2a9-9406-4993-98e7-9e118040becd",
             "method": "GET",
             "sortNum": 30000,
             "created": "2024-12-21T04:24:13.255Z",
-            "modified": "2024-12-21T04:24:13.255Z",
+            "modified": "2024-12-21T06:09:32.145Z",
             "headers": []
         },
         {
@@ -52,18 +52,30 @@
             "colId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
             "containerId": "",
             "name": "Create User",
-            "url": "http://localhost:8080/users",
+            "url": "http://localhost:8080/api/users",
             "method": "POST",
             "sortNum": 40000,
             "created": "2024-12-21T04:25:39.813Z",
-            "modified": "2024-12-21T04:26:16.085Z",
+            "modified": "2024-12-21T06:03:06.887Z",
             "headers": [],
             "body": {
                 "type": "json",
                 "raw": "{\n  \"email\": \"udin\",\n  \"role\": \"admin\"\n}",
                 "form": []
             }
+        },
+        {
+            "_id": "3ed51089-807e-4686-a616-5289e8497ef0",
+            "colId": "1f9109a8-02d3-4dc0-83da-65fd43a380df",
+            "containerId": "",
+            "name": "Get User by Id",
+            "url": "http://localhost:8080/api/users/39efb35d-6b7b-4c6b-88db-5b7c5f63c093",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-12-21T06:08:54.473Z",
+            "modified": "2024-12-21T06:09:06.888Z",
+            "headers": []
         }
     ],
-    "ref": "YJydPKdx7gMXvnjeMS15J4tI6OIb0S9ytlpLVWGP4ziEZP2fCaxFGMNsF3NO2KzuIJLUNzb94Q9W5gxO9RiKPw"
+    "ref": "YJydPKdx7gMXvnjeMS15J5hj2jz2UWTErFX3npfRBOmwo2fWF7dbwsWjb6jXUnmKOVHzW-cIUA4UW7TKBpownw"
 }
