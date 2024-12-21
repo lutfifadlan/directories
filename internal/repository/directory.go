@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+	"errors"
 	"log"
 
 	"github.com/google/uuid"
@@ -11,6 +12,8 @@ import (
 type DirectoryRepository struct {
 	DB *sql.DB
 }
+
+var ErrDirectoryNotFound = errors.New("directory not found")
 
 func NewDirectoryRepository(db *sql.DB) *DirectoryRepository {
 	return &DirectoryRepository{
@@ -70,6 +73,9 @@ func (repo *DirectoryRepository) FindById(id string) (*model.Directory, error) {
 
 	err := repo.DB.QueryRow(query, id).Scan(&d.Id, &d.Name)
 	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, ErrDirectoryNotFound
+		}
 		log.Println("Error finding directory by id:", err)
 		return nil, err
 	}

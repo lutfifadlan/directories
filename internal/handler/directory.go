@@ -31,3 +31,25 @@ func AddDirectory(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, d)
 }
+
+func GetDirectoryById(c *gin.Context) {
+	id := c.Param("id")
+
+	if id == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "ID is required"})
+		return
+	}
+
+	d, err := directoryService.GetDirectoryById(id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	if d == nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Directory not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, d)
+}
